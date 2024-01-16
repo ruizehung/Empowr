@@ -7,10 +7,10 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 List<String> affirmations = [
-  'I am enough. I have enough.',
-  'I am in the right place, at the right time, doing the right thing.',
-  'I can do hard things.',
-  "I allow myself to be more fully me.",
+  "The more I focus my mind upon the good, the more good comes to my life.",
+  "I am fine with who I am, and I love who I am becoming.",
+  "Stepping out of my comfort zone is necessary for growth.",
+  "I am worthy of love and respect.",
   "I believe in myself."
 ];
 
@@ -137,6 +137,16 @@ class _HomePageState extends State<HomePage> {
               },
             ),
             ListTile(
+              leading: const Icon(Icons.sentiment_satisfied_alt_rounded),
+              title: const Text('Send Encouragement'),
+              onTap: () {
+                setState(() {
+                  currentPage = Pages.sendEncouragement;
+                });
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
               leading: const Icon(Icons.edit),
               title: const Text('Lave a note'),
               onTap: () {
@@ -152,16 +162,6 @@ class _HomePageState extends State<HomePage> {
               onTap: () {
                 setState(() {
                   currentPage = Pages.receiveEncouragement;
-                });
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.sentiment_satisfied_alt_rounded),
-              title: const Text('Send Encouragement'),
-              onTap: () {
-                setState(() {
-                  currentPage = Pages.sendEncouragement;
                 });
                 Navigator.pop(context);
               },
