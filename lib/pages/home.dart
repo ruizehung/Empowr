@@ -1,5 +1,6 @@
 import 'package:empowr/pages/affirmation.dart';
-import 'package:empowr/pages/receive_encouragement.dart';
+import 'package:empowr/pages/leave_note.dart';
+import 'package:empowr/pages/view_encouragement.dart';
 import 'package:empowr/pages/send_encouragement.dart';
 import 'package:empowr/pages/signin.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,7 @@ List<String> affirmations = [
 ];
 
 // Create an enum for pages
-enum Pages { affirmations, receiveEncouragement, sendEncouragement }
+enum Pages { affirmations, sendEncouragement, leaveNote, receiveEncouragement }
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -59,10 +60,12 @@ class _HomePageState extends State<HomePage> {
             return Affirmation(content: affirmation);
           },
         );
-      case Pages.receiveEncouragement:
-        body = const ReceiveEncouragement();
       case Pages.sendEncouragement:
         body = const SendEncouragement();
+      case Pages.leaveNote:
+        body = const LeaveNote();
+      case Pages.receiveEncouragement:
+        body = const ViewEncouragement();
     }
 
     return Scaffold(
@@ -151,14 +154,14 @@ class _HomePageState extends State<HomePage> {
               title: const Text('Lave a note'),
               onTap: () {
                 setState(() {
-                  currentPage = Pages.receiveEncouragement;
+                  currentPage = Pages.leaveNote;
                 });
                 Navigator.pop(context);
               },
             ),
             ListTile(
               leading: const Icon(Icons.note_rounded),
-              title: const Text('Received Encouragement'),
+              title: const Text('View Encouragement'),
               onTap: () {
                 setState(() {
                   currentPage = Pages.receiveEncouragement;
