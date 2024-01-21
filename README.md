@@ -1,6 +1,14 @@
-# empowr
+# Empowr
 
-A new Flutter project.
+Empowr is a daily affirmation app designed to motivate users to read several affirmations each day, enhancing their self-esteem, cultivating a positive outlook, and alleviating stress. It also allows users to anonymously share notes about their encouragement needs, fostering a supportive community where members can exchange anonymous words of motivation and support.
+
+## Setup
+
+- Make sure you have upgraded your MacOS to the latest version.
+- Update Xcode to the latest version.
+- Install Flutter and Dart by following the instructions [here](https://flutter.dev/docs/get-started/install).
+- Add `android/app/google-services.json` and `ios/Runner/GoogleService-Info.plist` to the project.
+- `flutter run`
 
 ## Getting Started
 
