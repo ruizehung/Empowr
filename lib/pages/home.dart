@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'dart:math';
+
 import 'package:empowr/pages/affirmation.dart';
 import 'package:empowr/pages/leave_note.dart';
 import 'package:empowr/pages/view_encouragement.dart';
@@ -6,6 +9,7 @@ import 'package:empowr/pages/signin.dart';
 import 'package:flutter/material.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:empowr/pages/notifi_service.dart';
 
 List<String> affirmations = [
   "The more I focus my mind upon the good, the more good comes to my life.",
@@ -42,8 +46,23 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  String getRandomAffirmation() {
+    return affirmations[Random().nextInt(affirmations.length)];
+  }
+
+  Future<void> runAlarm() async {
+    while (true) {
+      NotificationService()
+          .showNotification(title: 'Empowr', body: getRandomAffirmation());
+
+      // Push notification appears every 30 minutes on lock screen
+      await Future.delayed(Duration(minutes: 30));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    runAlarm(); // Call the runAlarm function in the main method
     // Check if user is logged in
     if (_user == null) {
       return const SignInPage();
@@ -90,6 +109,14 @@ class _HomePageState extends State<HomePage> {
         child: SafeArea(
           child: body,
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        elevation: 100.0,
+        child: const Icon(Icons.add),
+        onPressed: () {
+          NotificationService()
+              .showNotification(title: 'Empowr', body: getRandomAffirmation());
+        },
       ),
       drawer: Drawer(
         // Add a ListView to the drawer. This ensures the user can scroll
@@ -151,7 +178,7 @@ class _HomePageState extends State<HomePage> {
             ),
             ListTile(
               leading: const Icon(Icons.edit),
-              title: const Text('Lave a note'),
+              title: const Text('Leave a note'),
               onTap: () {
                 setState(() {
                   currentPage = Pages.leaveNote;
