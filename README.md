@@ -10,6 +10,10 @@ Empowr is a daily affirmation app designed to motivate users to read several aff
 - Add `android/app/google-services.json` and `ios/Runner/GoogleService-Info.plist` to the project.
 - `flutter run`
 
+This command will launch the Empowr app on the selected iOS simulator.
+
+**Note:** If you encounter any issues running the app on the simulator, ensure that your project folder is located in a non-iCloud location, as iCloud may cause compatibility problems with Flutter development.
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
