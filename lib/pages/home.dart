@@ -110,14 +110,6 @@ class _HomePageState extends State<HomePage> {
           child: body,
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        elevation: 100.0,
-        child: const Icon(Icons.add),
-        onPressed: () {
-          NotificationService()
-              .showNotification(title: 'Empowr', body: getRandomAffirmation());
-        },
-      ),
       drawer: Drawer(
         // Add a ListView to the drawer. This ensures the user can scroll
         // through the options in the drawer if there isn't enough vertical
