@@ -16,7 +16,12 @@ List<String> affirmations = [
   "I am fine with who I am, and I love who I am becoming.",
   "Stepping out of my comfort zone is necessary for growth.",
   "I am worthy of love and respect.",
-  "I believe in myself."
+  "I believe in myself.",
+  "Every challenge I face is an opportunity to grow and improve",
+  "I am in charge of my own happiness, and I cultivate it with positive thoughts and actions.",
+  "I am resilient, strong, and capable of handling whatever comes my way.",
+  "I attract success by being my authentic self.",
+  "Gratitude fills my heart and shapes my perspective on life.",
 ];
 
 // Create an enum for pages
