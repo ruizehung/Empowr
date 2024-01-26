@@ -7,7 +7,9 @@ Empowr is a daily affirmation app designed to motivate users to read several aff
 - Make sure you have upgraded your MacOS to the latest version (14.2.1+).
 - Update Xcode to the latest version.
 - Install Flutter and Dart by following the instructions [here](https://flutter.dev/docs/get-started/install).
-- Add `android/app/google-services.json` and `ios/Runner/GoogleService-Info.plist` to the project. You can get these two files by [setting up Firebase](https://firebase.google.com/docs/flutter/setup?platform=ios) and enable Google Sign In.
+- Create a new Firebase project and enable Google Sign In. 
+- Connect the app to the Firebase project. You can follow the instructions [here](https://firebase.google.com/docs/flutter/setup?platform=ios).
+- Add `android/app/google-services.json` and `ios/Runner/GoogleService-Info.plist` to the project. You can download these files from the Firebase console project settings page.
 - `flutter run`
 
 This command will launch the Empowr app on the selected iOS simulator.
