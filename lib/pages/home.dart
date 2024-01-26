@@ -196,6 +196,29 @@ class _HomePageState extends State<HomePage> {
                 Navigator.pop(context);
               },
             ),
+            ListTile(
+              leading: const Icon(Icons.question_mark_outlined),
+              title: const Text('About'),
+              onTap: () {
+                Navigator.pop(context);
+                showAboutDialog(
+                  context: context,
+                  applicationName: 'Empowr',
+                  applicationVersion: '1.0.0',
+                  children: [
+                    const Text(
+                        'Empowr is a daily affirmation app designed to motivate users to read' 
+                        'several affirmations each day, enhancing their self-esteem, cultivating' 
+                        'a positive outlook, and alleviating stress. It also allows users to'
+                        'anonymously share notes about their encouragement needs, fostering a' 
+                        'supportive community where members can exchange anonymous words of' 
+                        'motivation and support.'
+                    ),
+                  ],
+                );
+                
+              },
+            ),
           ],
         ),
       ),
