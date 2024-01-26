@@ -4,17 +4,17 @@ Empowr is a daily affirmation app designed to motivate users to read several aff
 
 ## Setup
 
-- Make sure you have upgraded your MacOS to the latest version.
+- Make sure you have upgraded your MacOS to the latest version (14.2.1+).
 - Update Xcode to the latest version.
 - Install Flutter and Dart by following the instructions [here](https://flutter.dev/docs/get-started/install).
-- Add `android/app/google-services.json` and `ios/Runner/GoogleService-Info.plist` to the project.
+- Add `android/app/google-services.json` and `ios/Runner/GoogleService-Info.plist` to the project. You can get these two files by [setting up Firebase](https://firebase.google.com/docs/flutter/setup?platform=ios) and enable Google Sign In.
 - `flutter run`
 
 This command will launch the Empowr app on the selected iOS simulator.
 
 **Note:** If you encounter any issues running the app on the simulator, ensure that your project folder is located in a non-iCloud location, as iCloud may cause compatibility problems with Flutter development.
 
-## Getting Started
+## Getting Started with Flutter 
 
 This project is a starting point for a Flutter application.
 
@@ -28,4 +28,4 @@ For help getting started with Flutter development, view the
 samples, guidance on mobile development, and a full API reference.
 
 ## Attribute
-<a href="https://www.freepik.com/free-vector/abstract-background_4240408.htm#query=app%20background&position=6&from_view=keyword&track=ais&uuid=f6ebb341-fb6f-4050-a8ea-0ca9f7252690">Image by rawpixel.com</a> on Freepik
+App background image by [rawpixel.com]([rawpixel.com](https://www.freepik.com/free-vector/gradient-blur-soft-pink-pastel-phone-wallpaper-vector_18245926.htm#page=2&query=app%20background&position=5&from_view=keyword&track=ais&uuid=58c90b13-3a5e-4a80-b2c9-7a9bfabf6d4c)) on Freepik.
