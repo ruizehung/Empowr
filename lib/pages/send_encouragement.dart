@@ -66,27 +66,37 @@ class _SendEncouragementState extends State<SendEncouragement> {
   }
 
   void _sendEncouragement() {
-    if (_encouragementController.text.isEmpty) {
-      return;
-    }
-    // ToDo: Implement the logic to send encouragement
-    String noteID = noteToGiveEncouragement!.id!;
-    var encouragement = Encouragement(
-      senderID: _auth.currentUser!.uid,
-      content: _encouragementController.text,
-      createdAt: DateTime.now(),
-    );
-    db
-        .collection("notes")
-        .doc(noteID)
-        .collection("encouragements")
-        .add(encouragement.toFirestore())
-        .then((documentSnapshot) {
+  if (_encouragementController.text.isEmpty) {
+    return;
+  }
+
+  String noteID = noteToGiveEncouragement!.id!;
+  var encouragement = Encouragement(
+    senderID: _auth.currentUser!.uid,
+    content: _encouragementController.text,
+    createdAt: DateTime.now(),
+  );
+
+  // Add the encouragement to the subcollection
+  db
+      .collection("notes")
+      .doc(noteID)
+      .collection("encouragements")
+      .add(encouragement.toFirestore())
+      .then((documentSnapshot) {
+    // Update the encouragement count in the main notes collection
+    db.collection("notes").doc(noteID).update({
+      'encouragementCount': FieldValue.increment(1),
+    }).then((value) {
       showSuccessDialogue(context);
       // Clear the text field after sending
       _encouragementController.clear();
-    }, onError: (e) => print("Error adding document $e"));
-  }
+    }).catchError((error) {
+      print("Error updating encouragement count: $error");
+    });
+  }, onError: (e) => print("Error adding document $e"));
+}
+
 
   @override
   Widget build(BuildContext context) {
