@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'dart:math';
+
 import 'package:empowr/pages/affirmation.dart';
 import 'package:empowr/pages/leave_note.dart';
 import 'package:empowr/pages/view_encouragement.dart';
@@ -6,13 +9,19 @@ import 'package:empowr/pages/signin.dart';
 import 'package:flutter/material.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:empowr/pages/notifi_service.dart';
 
 List<String> affirmations = [
   "The more I focus my mind upon the good, the more good comes to my life.",
   "I am fine with who I am, and I love who I am becoming.",
   "Stepping out of my comfort zone is necessary for growth.",
   "I am worthy of love and respect.",
-  "I believe in myself."
+  "I believe in myself.",
+  "Every challenge I face is an opportunity to grow and improve",
+  "I am in charge of my own happiness, and I cultivate it with positive thoughts and actions.",
+  "I am resilient, strong, and capable of handling whatever comes my way.",
+  "I attract success by being my authentic self.",
+  "Gratitude fills my heart and shapes my perspective on life.",
 ];
 
 // Create an enum for pages
@@ -42,8 +51,23 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  String getRandomAffirmation() {
+    return affirmations[Random().nextInt(affirmations.length)];
+  }
+
+  Future<void> runAlarm() async {
+    while (true) {
+      NotificationService()
+          .showNotification(title: 'Empowr', body: getRandomAffirmation());
+
+      // Push notification appears every 30 minutes on lock screen
+      await Future.delayed(Duration(minutes: 30));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    runAlarm(); // Call the runAlarm function in the main method
     // Check if user is logged in
     if (_user == null) {
       return const SignInPage();
@@ -151,7 +175,7 @@ class _HomePageState extends State<HomePage> {
             ),
             ListTile(
               leading: const Icon(Icons.edit),
-              title: const Text('Lave a note'),
+              title: const Text('Leave a note'),
               onTap: () {
                 setState(() {
                   currentPage = Pages.leaveNote;
@@ -175,6 +199,29 @@ class _HomePageState extends State<HomePage> {
               onTap: () {
                 _auth.signOut();
                 Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.question_mark_outlined),
+              title: const Text('About'),
+              onTap: () {
+                Navigator.pop(context);
+                showAboutDialog(
+                  context: context,
+                  applicationName: 'Empowr',
+                  applicationVersion: '1.0.0',
+                  children: [
+                    const Text(
+                        'Empowr is a daily affirmation app designed to motivate users to read' 
+                        'several affirmations each day, enhancing their self-esteem, cultivating' 
+                        'a positive outlook, and alleviating stress. It also allows users to'
+                        'anonymously share notes about their encouragement needs, fostering a' 
+                        'supportive community where members can exchange anonymous words of' 
+                        'motivation and support.'
+                    ),
+                  ],
+                );
+                
               },
             ),
           ],

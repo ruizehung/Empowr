@@ -697,6 +697,8 @@ PODS:
     - nanopb (< 2.30910.0, >= 2.30908.0)
   - FirebaseSharedSwift (10.20.0)
   - Flutter (1.0.0)
+  - flutter_local_notifications (0.0.1):
+    - Flutter
   - google_sign_in_ios (0.0.1):
     - Flutter
     - FlutterMacOS
@@ -804,6 +806,7 @@ DEPENDENCIES:
   - firebase_auth (from `.symlinks/plugins/firebase_auth/ios`)
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - Flutter (from `Flutter`)
+  - flutter_local_notifications (from `.symlinks/plugins/flutter_local_notifications/ios`)
   - google_sign_in_ios (from `.symlinks/plugins/google_sign_in_ios/darwin`)
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
   - share_plus (from `.symlinks/plugins/share_plus/ios`)
@@ -842,6 +845,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/firebase_core/ios"
   Flutter:
     :path: Flutter
+  flutter_local_notifications:
+    :path: ".symlinks/plugins/flutter_local_notifications/ios"
   google_sign_in_ios:
     :path: ".symlinks/plugins/google_sign_in_ios/darwin"
   path_provider_foundation:
@@ -866,7 +871,7 @@ SPEC CHECKSUMS:
   FirebaseFirestoreInternal: 0dc0762afd68192e9d45c31d3dd3017accc84333
   FirebaseSharedSwift: 2fbf73618288b7a36b2014b957745dcdd781389e
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
-  google_sign_in_ios: ede92ec558c3a73ec07cb180f31820152fb8ca89
+  google_sign_in_ios: 1bfaf6607b44cd1b24c4d4bc39719870440f9ce1
   GoogleSignIn: b232380cf495a429b8095d3178a8d5855b42e842
   GoogleUtilities: 0759d1a57ebb953965c2dfe0ba4c82e95ccc2e34
   "gRPC-C++": 2df8cba576898bdacd29f0266d5236fa0e26ba6a
@@ -880,6 +885,6 @@ SPEC CHECKSUMS:
   RecaptchaInterop: 7d1a4a01a6b2cb1610a47ef3f85f0c411434cb21
   share_plus: c3fef564749587fc939ef86ffb283ceac0baf9f5
 
-PODFILE CHECKSUM: dd6ed856fcc27e561fd537bc1b270d4e84c29a9a
+PODFILE CHECKSUM: 62c3bef2f960733f8f0090d7e5652100736a841b
 
 COCOAPODS: 1.14.3
