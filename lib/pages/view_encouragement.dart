@@ -37,11 +37,11 @@ class _ViewEncouragementState extends State<ViewEncouragement> {
               child: Text('No notes available.'),
             );
           }
-/*
+
           notes.removeWhere((note) {
             return note.data()['ownerID'] != _auth.currentUser!.uid;
           });
-*/
+
           return ListView.builder(
             itemCount: notes.length,
             itemBuilder: (context, index) {
