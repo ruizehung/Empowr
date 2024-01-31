@@ -42,7 +42,7 @@ class _LeaveNoteState extends State<LeaveNote> {
   void saveNoteToDatabase(BuildContext context) {
     var note = Note(
       ownerID: _auth.currentUser!.uid,
-      content: "I have a big test tomorrow.",
+      content: contentController.text,
       createdAt: DateTime.now(),
       encouragementCount: 0,
     );
