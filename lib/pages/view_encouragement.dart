@@ -45,7 +45,9 @@ class _ViewEncouragementState extends State<ViewEncouragement> {
           return ListView.builder(
             itemCount: notes.length,
             itemBuilder: (context, index) {
+              
               var note = notes[index].data();
+              // print(note);
 
               return Card(
                 child: ExpansionTile(
@@ -66,7 +68,7 @@ class _ViewEncouragementState extends State<ViewEncouragement> {
                     ),
                   ),
                   children: [
-                    EncouragementsWidget(noteId: notes[index].id),
+                    EncouragementsWidget(noteId: notes[index].id, key: UniqueKey()),
                   ],
                 ),
               );
