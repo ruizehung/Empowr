@@ -58,6 +58,12 @@ class _ViewEncouragementState extends State<ViewEncouragement> {
                       'Encouragement Count: ${note['encouragementCount'] ?? 0}',
                       style: Theme.of(context).textTheme.titleSmall,
                     ),
+                    trailing: DeleteNoteIcon(
+                      noteId: notes[index].id,
+                      onDelete: () {
+                        // Perform any additional actions after the note is deleted, if necessary
+                      },
+                    ),
                   ),
                   children: [
                     EncouragementsWidget(noteId: notes[index].id),
@@ -71,6 +77,55 @@ class _ViewEncouragementState extends State<ViewEncouragement> {
     );
   }
 }
+
+class DeleteNoteIcon extends StatelessWidget {
+  final String noteId;
+  final Function onDelete;
+
+  const DeleteNoteIcon({Key? key, required this.noteId, required this.onDelete}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      icon: const Icon(Icons.delete),
+      onPressed: () {
+        // Confirm deletion with the user before proceeding
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: const Text("Confirm Deletion"),
+              content: const Text("Are you sure you want to delete this note?"),
+              actions: <Widget>[
+                TextButton(
+                  child: const Text("Cancel"),
+                  onPressed: () {
+                    // Dismiss the dialog but don't delete the note
+                    Navigator.of(context).pop();
+                  },
+                ),
+                TextButton(
+                  child: const Text("Delete"),
+                  onPressed: () {
+                    // Delete the note from Firestore, dismiss the dialog, and call the onDelete callback
+                    FirebaseFirestore.instance.collection("notes").doc(noteId).delete().then((_) {
+                      Navigator.of(context).pop(); // Close the dialog
+                      onDelete(); // Call the onDelete callback function
+                    }).catchError((error) {
+                      // Handle any errors
+                      print("Error deleting note: $error");
+                    });
+                  },
+                ),
+              ],
+            );
+          },
+        );
+      },
+    );
+  }
+}
+
 
 class EncouragementsWidget extends StatelessWidget {
   final String noteId;
