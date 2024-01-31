@@ -80,7 +80,7 @@ class _HomePageState extends State<HomePage> {
           controller: controller,
           scrollDirection: Axis.vertical,
           itemBuilder: (context, index) {
-            final affirmation = affirmations[index % affirmations.length];
+            final affirmation = affirmations[Random().nextInt(affirmations.length)];
             return Affirmation(content: affirmation);
           },
         );
